@@ -1,0 +1,38 @@
+import { ForgetPassword } from "./pages/forgetPassword/ForgetPassword";
+import { StudentPage } from "./pages/studentPage/StudentPage";
+import { TeacherPage } from "./pages/teacherPage/TeacherPage";
+import { SuperUserPage } from "./pages/superUserPage/SuperUserPage";
+import { ExecutivePage } from "./pages/executive/Executive";
+import { Login } from "./pages/login/Login";
+import { Register } from "./pages/register/Register";
+
+export const routes = [
+  {
+    path: "/login",
+    Element: Login,
+  },
+  {
+    path: "/register",
+    Element: Register,
+  },
+  {
+    path: "/forget",
+    Element: ForgetPassword,
+  },
+  {
+    path: "/student",
+    Element: StudentPage,
+  },
+  {
+    path: "/teacher",
+    Element: TeacherPage,
+  },
+  {
+    path: "/superuser",
+    Element: SuperUserPage,
+  },
+  {
+    path: "/executive",
+    Element: ExecutivePage,
+  },
+];

@@ -5,6 +5,7 @@ import { SuperUserPage } from "./pages/superUserPage/SuperUserPage";
 import { ExecutivePage } from "./pages/executive/Executive";
 import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
+import { PasswordRecovery } from "./pages/passwordRecovery/PasswordRecovery";
 
 export const routes = [
   {
@@ -34,5 +35,9 @@ export const routes = [
   {
     path: "/executive",
     Element: ExecutivePage,
+  },
+  {
+    path: "/newpassword/:token",
+    Element: PasswordRecovery,
   },
 ];

@@ -6,8 +6,13 @@ import { ExecutivePage } from "./pages/executive/Executive";
 import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
 import { PasswordRecovery } from "./pages/passwordRecovery/PasswordRecovery";
+import { Home } from "./pages/Home";
 
 export const routes = [
+  {
+    path: "/",
+    Element: Home,
+  },
   {
     path: "/login",
     Element: Login,

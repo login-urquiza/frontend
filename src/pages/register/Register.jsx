@@ -106,7 +106,7 @@ export const Register = () => {
         >
           {formInputs.map(({ type, placeholder, name }) => {
             return (
-              <div key={name}>
+              <div key={name} className="flex flex-col">
                 <input
                   type={type}
                   {...getFieldProps(name)}

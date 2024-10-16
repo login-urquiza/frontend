@@ -35,7 +35,7 @@ export const PasswordRecovery = () => {
         });
         return;
       }
-      console.log(values.password);
+
       try {
         const changePassword = await fetch(
           `http://localhost:7000/api/users/changepassword`,
@@ -60,7 +60,7 @@ export const PasswordRecovery = () => {
           });
           navigate("/login");
         } else {
-          throw new Error(changePassword.error);
+          throw new Error(changePassword);
         }
       } catch (error) {
         Swal.fire({
@@ -75,7 +75,9 @@ export const PasswordRecovery = () => {
     validateOnBlur: true,
     validationSchema: yup.object({
       email: yup.string(),
-      password: yup.string(),
+      password: yup
+        .string()
+        .min(8, "La contraseña debe contener al menos 8 caracteres!"),
     }),
   });
 
@@ -89,7 +91,7 @@ export const PasswordRecovery = () => {
         >
           {formInputs.map(({ type, placeholder, name }) => {
             return (
-              <div key={name}>
+              <div key={name} className="flex flex-col">
                 <input
                   type={type}
                   {...getFieldProps(name)}

@@ -11,27 +11,31 @@ export const ForgetPassword = () => {
     },
     onSubmit: async (values) => {
       try {
-        const login = await fetch("http://localhost:7000/api/auth/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: values.email,
-          }),
-        }).then((res) => res.json());
+        const sendRecovery = await fetch(
+          "http://localhost:7000/api/users/recover",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: values.email,
+            }),
+          }
+        ).then((res) => res.json());
 
-        if (login.user) {
+        if (sendRecovery?.msg) {
           Swal.fire({
             title: "¡Éxito!",
-            text: `Usuario creado! Ingrese con el email ${`${values.dni}@terciariourquiza.edu.ar`} y la contraseña que ha proporcionado.`,
+            text: sendRecovery.msg,
             icon: "success",
             confirmButtonText: "OK",
           });
         } else {
-          throw new Error(login.error);
+          throw new Error(sendRecovery.error);
         }
       } catch (error) {
+        console.log(error);
         Swal.fire({
           title: "Error",
           text: error,

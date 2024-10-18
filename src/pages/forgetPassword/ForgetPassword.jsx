@@ -35,7 +35,6 @@ export const ForgetPassword = () => {
           throw new Error(sendRecovery.error);
         }
       } catch (error) {
-        console.log(error);
         Swal.fire({
           title: "Error",
           text: error,

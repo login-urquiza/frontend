@@ -8,7 +8,6 @@ export const StudentPage = () => {
     localStorage.getItem("credentials") &&
     JSON.parse(localStorage.getItem("credentials"));
 
-  const classRooms = [1, 2, 3, 4, 5, 6];
   const navigate = useNavigate();
   const [user] = useState(
     localStorage.getItem("credentials") ? credentials?.user : []
@@ -31,9 +30,9 @@ export const StudentPage = () => {
         case "DS":
           return "bg-green-700";
         case "AF":
-          return "bg-red-700";
-        case "IT":
           return "bg-blue-700";
+        case "IT":
+          return "bg-red-700";
         default:
           return "bg-purple-950";
       }
@@ -49,6 +48,30 @@ export const StudentPage = () => {
   useEffect(() => {
     getUser();
   }, []);
+
+  let classRooms = [
+    "Práctica Profesionalizante 1",
+    "Bases de Datos 1",
+    "Ingeniería de Software 2",
+    "Programación 1",
+    "Estadística",
+    "Innovación y Desarrollo Emprendedor",
+    "Inglés Técnico 2 ",
+    "UDI 2 ",
+    "Problemáticas Socio Contemporáneas",
+  ];
+
+  console.log(user.career);
+  if (user?.career[0] === "AF") {
+    classRooms[1] = "Desarrollo de Sistemas";
+    classRooms[2] = "Estrategias de Negocios ";
+    classRooms[3] = "Gestión de Software 2";
+  } else if (user?.career[0] === "IT") {
+    classRooms[1] = "Bases de Datos";
+    classRooms[2] = "Sistemas Operativos";
+    classRooms[3] = "Algoritmos y Estructura de Datos";
+    classRooms[6] = "Infraestructura de Redes 2";
+  }
 
   return (
     <div className={`min-h-screen ${career(user?.career)}  text-white`}>
